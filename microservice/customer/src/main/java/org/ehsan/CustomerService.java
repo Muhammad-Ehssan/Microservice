@@ -27,6 +27,7 @@ public class CustomerService {
        FraudResponseInfo responseInfo = restTemplate.getForObject("http://localhost:8081/api/v1/fraud/validate-fraudster/{customer}",
                 FraudResponseInfo.class,
                 customer.getId());
+       
        if(responseInfo != null){
            log.info("Response received from microservice Fraud {}",responseInfo.toString());
            if(responseInfo.getFraudster()){
