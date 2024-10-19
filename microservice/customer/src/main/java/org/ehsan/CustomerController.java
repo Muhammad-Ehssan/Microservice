@@ -21,6 +21,10 @@ public class CustomerController {
     @PostMapping("/register")
     public void registerCustomer(@Valid @RequestBody CustomerRequestInfo reqInfo){
         log.info("Request reecived with parameters:- {} ",reqInfo);
-        customerService.registerService(reqInfo);
+        try {
+            customerService.registerService(reqInfo);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
